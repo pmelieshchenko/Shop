@@ -1,0 +1,30 @@
+<!-- <div class="card">
+  <div class="card-header">Items</div>
+  <div class="card-body">
+  </div>
+</div> -->
+
+<table width="100%">
+  <thead>
+    <tr class="headerTable">
+      <td>ID</td>
+      <td>Name</td>
+      <td>Description</td>
+      <td>Price</td>
+      <td>Category</td>
+      <td>Avialable</td>
+      <td></td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let it of items">
+      <td>{{it.id}}</td>
+      <td>{{it.name}}</td>
+      <td>{{it.description}}</td>
+      <td>{{it.price}}</td>
+      <td>{{it.category}}</td>
+      <td>{{it.isAvialable}}</td>
+      <td><button (click)="buyProduct(it.id)">Buy</button></td>
+    </tr>
+  </tbody>
+</table>

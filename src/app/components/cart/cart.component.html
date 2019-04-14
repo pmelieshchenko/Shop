@@ -1,0 +1,28 @@
+<!-- <div class="card">
+  <div class="card-header">Cart</div>
+  <div class="card-body">
+    <div *ngIf="!cartStatus; else successStatus">
+        <h6>Your cart is empty</h6>
+    </div>
+    <ng-template #successStatus>
+      <div>
+          <h4>Your cart isn't empty</h4>
+      </div>
+    </ng-template>
+  </div>
+</div> -->
+
+
+<!-- <p *ngFor="let it of items">{{}}</p> -->
+
+<div class="card">
+  <div class="card-header">Cart</div>
+  <div class="card-body">
+    <div *ngFor="let it of items">
+      <div *ngIf="!it.isAvialable">
+        <p>{{it.name}}</p>
+        <hr>
+      </div>
+    </div>
+  </div>
+</div>

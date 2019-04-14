@@ -1,0 +1,10 @@
+<div class="row">
+  <div class="col-8">
+    <h2>{{greeting}}</h2>
+  </div>
+  <div class="col-4 signIn">
+    <input type="text" (input)="customerName=$event.target.value" value="{{customerName}}">
+    <button (click)="clicked()">Sign in</button>
+  </div>
+</div>
+
