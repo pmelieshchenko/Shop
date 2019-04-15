@@ -19,11 +19,7 @@ export class ListProductComponent implements OnInit {
   }
 
   buyProduct(id:number){
-    /*
-      TODO: add product to cart
-    */
-    // console.log(id);
-    this.items[id].isAvialable = !this.items[id].isAvialable;
+    this.productService.addItemToCart(id);
   }
 
 }

@@ -7,6 +7,7 @@ export class Product implements IProduct {
         public name: string,
         public description: string,
         public price: number,
+        public amount: number,
         public category:Category,
         public isAvialable?: boolean
     ) {

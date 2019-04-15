@@ -9,18 +9,21 @@ import { Product } from '../product/product.model';
 })
 export class CartComponent implements OnInit {
   items: Array<Product>;
-  cartStatus:boolean = false;
+  amt:number;
 
   constructor(
     private productService:ProductService
   ) { }
 
   ngOnInit() {
-    this.items = this.productService.getItems();
-    this.cartStatus = this.items.every(this.checkAvialable);
+    this.items = this.productService.getItemsCart();
   }
 
-  checkAvialable(item:Product){
-    return !item.isAvialable;
+  getAmt():number{
+    return this.items.reduce((sum, item) => sum + item.price * item.amount, 0);
+  }
+
+  delItemFromCart(id:number, amt:number):void{
+    this.productService.delItemFromCart(id, amt);
   }
 }

@@ -1,28 +1,43 @@
-<!-- <div class="card">
-  <div class="card-header">Cart</div>
-  <div class="card-body">
-    <div *ngIf="!cartStatus; else successStatus">
-        <h6>Your cart is empty</h6>
-    </div>
-    <ng-template #successStatus>
-      <div>
-          <h4>Your cart isn't empty</h4>
-      </div>
-    </ng-template>
-  </div>
-</div> -->
-
-
-<!-- <p *ngFor="let it of items">{{}}</p> -->
-
 <div class="card">
   <div class="card-header">Cart</div>
   <div class="card-body">
-    <div *ngFor="let it of items">
-      <div *ngIf="!it.isAvialable">
-        <p>{{it.name}}</p>
+    <div *ngIf="items.length == 0; else successStatus">
+        <h6>Your cart is empty</h6>
+    </div>
+    <ng-template #successStatus>
+      <!--  -->
+      <div class="container">
+        <div class="row">
+          <div class="col-6">Total</div>
+          <div class="col-6 rightCol">{{getAmt()}}</div>
+        </div>
         <hr>
       </div>
-    </div>
+      <div *ngFor="let it of items">
+        <div class="container">
+          <div class="row">
+            <div class="col-6">Name</div>
+            <div class="col-6 rightCol">{{it.name}}</div>
+          </div>
+          <div class="row">
+            <div class="col-6">Amount</div>
+            <div class="col-6 rightCol">{{it.amount}}</div>
+          </div>
+          <div class="row">
+            <div class="col-6">Price</div>
+            <div class="col-6 rightCol">{{it.price}}</div>
+          </div>
+          <div class="row">
+            <div class="col-6">Sum</div>
+            <div class="col-6 rightCol">{{it.amount * it.price}}</div>
+          </div>
+          <div class="row">
+            <div class="col-6"><button (click)="delItemFromCart(it.id, 1)">-1</button></div>
+            <div class="col-6 rightCol"><button (click)="delItemFromCart(it.id, it.amount)">del</button></div>
+          </div>
+        </div>
+        <hr>
+      </div>
+    </ng-template>
   </div>
 </div>

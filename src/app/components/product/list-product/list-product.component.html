@@ -11,6 +11,7 @@
       <td>Name</td>
       <td>Description</td>
       <td>Price</td>
+      <td>Amount</td>
       <td>Category</td>
       <td>Avialable</td>
       <td></td>
@@ -22,9 +23,10 @@
       <td>{{it.name}}</td>
       <td>{{it.description}}</td>
       <td>{{it.price}}</td>
+      <td>{{it.amount}}</td>
       <td>{{it.category}}</td>
       <td>{{it.isAvialable}}</td>
-      <td><button (click)="buyProduct(it.id)">Buy</button></td>
+      <td><button (click)="buyProduct(it.id)" [disabled]="!it.isAvialable">Buy</button></td>
     </tr>
   </tbody>
 </table>
