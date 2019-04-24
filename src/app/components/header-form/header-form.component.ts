@@ -6,17 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header-form.component.css']
 })
 export class HeaderFormComponent implements OnInit {
-  customerName:string;
-  greeting:string = 'What is your name?';
-  
+  customerName: string;
+  greeting = 'What is your name?';
   constructor() { }
 
   ngOnInit() {
   }
 
-  clicked(){
-    if(this.customerName){
-      this.greeting = `Hello ${this.customerName}`;
+  clicked() {
+    if (this.customerName) {
+      this.greeting = 'Hello ' + this.customerName;
       this.customerName = '';
     }
   }

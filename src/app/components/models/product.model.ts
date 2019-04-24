@@ -1,4 +1,4 @@
-import { Category } from './category.enum';
+import { Category } from '../enums/category.enum';
 import { IProduct } from './iproduct';
 
 export class Product implements IProduct {
@@ -8,7 +8,7 @@ export class Product implements IProduct {
         public description: string,
         public price: number,
         public amount: number,
-        public category:Category,
+        public category: Category,
         public isAvialable?: boolean
     ) {
         this.isAvialable = isAvialable || true;

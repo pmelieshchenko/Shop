@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Product } from './product.model';
-import { Category } from './category.enum';
+import { Product } from '../models/product.model';
+import { Category } from '../enums/category.enum';
 
 @Injectable({
   providedIn: 'root'
@@ -37,15 +37,14 @@ export class ProductService {
     return this.itemsCart;
   }
 
-  addItemToCart(id:number):void{
+  addItemToCart(id: number): void {
     this.items[id].amount -= 1;
-    if(this.items[id].amount == 0){
+    if (this.items[id].amount === 0) {
       this.items[id].isAvialable = false;
     }
-    
-    for(let i = 0; i < this.itemsCart.length;i++){
-      if(this.itemsCart[i].id == id){
-        this.itemsCart[i].amount += 1;
+    for (const item of this.itemsCart) {
+      if (item.id === id) {
+        item.amount += 1;
         return;
       }
     }
@@ -54,19 +53,20 @@ export class ProductService {
     this.itemsCart[this.itemsCart.length - 1].amount = 1;
   }
 
-  delItemFromCart(id:number, amt:number):void{
-
-    for(let i = 0; i < this.itemsCart.length;i++){
-      if(this.itemsCart[i].id == id && this.itemsCart[i].amount > 1 && amt == 1){
-        this.itemsCart[i].amount -= 1;
-      }else{
-        this.itemsCart.splice(i, 1);
+  delItemFromCart(id: number, amt: number): void {
+    for (let i = 0; i < this.itemsCart.length; i++) {
+      if (this.itemsCart[i].id === id) {
+        if (this.itemsCart[i].amount > 1 && amt === 1) {
+          this.itemsCart[i].amount -= 1;
+        } else {
+          this.itemsCart.splice(i, 1);
+        }
       }
     }
 
     this.items[id].amount += amt;
-    if(this.items[id].amount > 0 && !this.items[id].isAvialable){
-      this.items[id].isAvialable = true; 
+    if (this.items[id].amount > 0 && !this.items[id].isAvialable) {
+      this.items[id].isAvialable = true;
     }
   }
 }
